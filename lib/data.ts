@@ -82,7 +82,6 @@ export const services: Service[] = [
     rok: "3–5 dana",
     icon: "file",
     variant: "accent",
-    wide: true,
   },
 ];
 

@@ -1,46 +1,45 @@
-import Image from "next/image";
 import { areas, faq } from "@/lib/data";
-import { card, cardStatic, eyebrow, h2, pill, section } from "./ui";
 
 export default function Faq() {
   return (
-    <section id="pitanja" className={section}>
-      <div className="grid gap-4 lg:grid-cols-[1.5fr_1fr]">
-        <div className={`${cardStatic} rounded-[40px] bg-white p-[clamp(24px,4vw,56px)]`}>
-          <h2 className={`${h2} text-[clamp(36px,4.6vw,64px)]`}>Česta pitanja.</h2>
-          <div className="mt-8 divide-y divide-line">
-            {faq.map((f) => (
-              <details key={f.q} className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold [&::-webkit-details-marker]:hidden">
-                  {f.q}
-                  <span
-                    className="flex size-9 flex-none items-center justify-center rounded-full bg-surface text-xl leading-none transition-transform group-open:rotate-45"
-                    aria-hidden="true"
-                  >
-                    +
-                  </span>
-                </summary>
-                <p className="mt-3 max-w-[620px] text-[15px] text-muted">{f.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-
-        <div className={`${card} flex min-h-[420px] flex-col bg-ink p-6 text-white sm:p-10`}>
-          <Image src="/img/topo-hero.svg" alt="" fill unoptimized className="object-cover opacity-90" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,20,.2)_0%,rgba(11,15,20,.88)_75%)]" />
-          <span className={`${pill} ${eyebrow} relative self-start bg-accent text-ink`}>GDE RADIMO</span>
-          <div className="relative mt-auto">
-            <h3 className="font-display text-[clamp(32px,3.6vw,48px)] leading-none font-semibold tracking-[-.04em]">
-              Kraljevo i okolina.
-            </h3>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {areas.map((a) => (
-                <li key={a} className={`${pill} bg-white/15 text-white`}>
-                  {a}
-                </li>
+    <section id="pitanja" className="relative overflow-hidden pb-[clamp(64px,8vw,112px)]">
+      <div className="orb top-0 left-[20%] h-85 w-115 bg-[rgba(109,92,255,.22)]" />
+      <div className="wrap relative">
+        <div className="grid gap-4 lg:grid-cols-[1.5fr_1fr]">
+          <div className="glass rounded-[36px] p-[clamp(24px,4vw,56px)]">
+            <h2 className="gt text-[clamp(36px,4.6vw,68px)] leading-[.96] font-semibold tracking-[-.05em]">Česta pitanja.</h2>
+            <div className="mt-8">
+              {faq.map((f) => (
+                <details key={f.q} className="faq">
+                  <summary>
+                    <span>{f.q}</span>
+                    <span className="plus" aria-hidden="true">
+                      +
+                    </span>
+                  </summary>
+                  <p>{f.a}</p>
+                </details>
               ))}
-            </ul>
+            </div>
+          </div>
+
+          <div className="glass flex min-h-105 flex-col overflow-hidden rounded-[36px] p-[clamp(24px,4vw,40px)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/img/topo-a.svg" alt="" className="absolute inset-0 size-full rounded-[36px] object-cover opacity-70" />
+            <div className="absolute inset-0 rounded-[36px] bg-[linear-gradient(180deg,rgba(5,7,11,.1)_0%,rgba(5,7,11,.85)_78%)]" />
+            <span className="relative self-start rounded-full border border-white/20 bg-white/12 px-3.5 py-2 font-mono text-[11px] tracking-[.14em]">
+              GDE RADIMO
+            </span>
+            <div className="relative mt-auto">
+              <h3 className="text-[clamp(32px,3.6vw,50px)] leading-none font-semibold tracking-[-.05em] text-white">Kraljevo i okolina.</h3>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {areas.map((a) => (
+                  <li key={a} className="rounded-full border border-white/15 bg-white/12 px-3.5 py-2 text-[13px] font-medium">
+                    {a}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

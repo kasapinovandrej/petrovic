@@ -1,51 +1,60 @@
-import Image from "next/image";
-import { services, type Service } from "@/lib/data";
+import { services } from "@/lib/data";
 import { ServiceIcon } from "./Icons";
-import { bento, card, displayFont, h2, pill, section, sectionHead, sectionNote } from "./ui";
 
-const surface: Record<Service["variant"], string> = {
-  white: "bg-white",
-  dark: "bg-ink text-white",
-  photo: "bg-ink text-white",
-  accent: "bg-accent",
+// Boja sjaja u uglu svake kartice
+const glow: Record<string, string> = {
+  snimanje: "radial-gradient(110% 90% at 0% 0%,rgba(109,92,255,.38),transparent 55%)",
+  parcelacija: "radial-gradient(110% 90% at 100% 0%,rgba(34,211,238,.30),transparent 55%)",
+  iskolcenje: "radial-gradient(110% 90% at 0% 100%,rgba(200,245,58,.26),transparent 55%)",
+  etaziranje: "radial-gradient(110% 90% at 100% 100%,rgba(255,77,157,.28),transparent 55%)",
+  dron: "radial-gradient(110% 100% at 100% 0%,rgba(61,139,255,.40),transparent 55%)",
+  legalizacija: "radial-gradient(110% 100% at 0% 0%,rgba(255,154,61,.34),transparent 55%)",
 };
-
-function ServiceCard({ s }: { s: Service }) {
-  const dark = s.variant === "dark" || s.variant === "photo";
-  const descColor = dark ? "text-[#c3cbd2]" : s.variant === "accent" ? "font-medium text-ink" : "text-muted";
-  const rokClass = dark ? "bg-accent text-ink font-bold" : s.variant === "accent" ? "bg-ink text-white" : "bg-ink text-white";
-
-  return (
-    <article className={`${card} ${surface[s.variant]} flex min-h-75 flex-col gap-5 p-6 sm:p-8 ${s.wide ? "sm:col-span-2" : ""}`}>
-      {s.variant === "photo" && (
-        <>
-          <Image src="/img/topo-alt.svg" alt="" fill unoptimized className="object-cover opacity-85" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,15,20,.92)_0%,rgba(11,15,20,.2)_100%)]" />
-        </>
-      )}
-      <span className={`relative flex size-13 flex-none items-center justify-center rounded-full ${s.variant === "accent" ? "bg-ink" : "bg-accent"}`}>
-        <ServiceIcon name={s.icon} color={s.variant === "accent" ? "#FFFFFF" : "#0B0F14"} />
-      </span>
-      <h3 className={`${displayFont} relative leading-none tracking-[-.03em] ${s.wide ? "text-[34px]" : "text-[30px]"}`}>{s.title}</h3>
-      <p className={`relative max-w-[440px] text-[15px] ${descColor}`}>{s.desc}</p>
-      <div className="relative mt-auto flex flex-wrap gap-2">
-        <span className={`${pill} ${rokClass}`}>Rok: {s.rok}</span>
-      </div>
-    </article>
-  );
-}
 
 export default function Services() {
   return (
-    <section id="usluge" className={section}>
-      <div className={sectionHead}>
-        <h2 className={h2}>Sve što parcela traži.</h2>
-        <p className={sectionNote}>Orijentacioni rokovi su navedeni uz svaku uslugu. Cenu dobijate u ponudi, pre prvog merenja.</p>
-      </div>
-      <div className={`${bento} mt-12`}>
-        {services.map((s) => (
-          <ServiceCard key={s.id} s={s} />
-        ))}
+    <section id="usluge" className="bg-[linear-gradient(180deg,#F3F4F7_0%,#EAECF2_100%)] py-[clamp(80px,10vw,144px)] text-card">
+      <div className="wrap">
+        <h2 className="max-w-250 text-[clamp(48px,8vw,124px)] leading-[.92] font-semibold tracking-[-.055em]">Sve što parcela traži.</h2>
+        <p className="mt-7 max-w-130 text-[19px] text-[#4A5362]">
+          Orijentacioni rokovi su uz svaku uslugu. Cenu dobijate u ponudi, pre prvog merenja.
+        </p>
+
+        <div className="mt-18 grid grid-flow-dense grid-cols-1 gap-4 p-1.5 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((s) => {
+            const photo = s.variant === "photo";
+            return (
+              <div key={s.id} className={`gc ${s.wide ? "lg:col-span-2" : ""}`}>
+                <div className="gc-in" style={{ background: `${glow[s.id]},#0A0D13` }}>
+                  {photo && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src="/img/topo-b.svg"
+                      alt=""
+                      className="absolute inset-0 size-full rounded-[28px] object-cover opacity-45 mix-blend-screen"
+                    />
+                  )}
+                  <span className="relative flex size-13 items-center justify-center rounded-full border border-white/20 bg-white/10">
+                    <ServiceIcon name={s.icon} />
+                  </span>
+                  <h3
+                    className={`relative m-0 leading-none font-semibold tracking-[-.04em] ${s.wide ? "text-[34px]" : "text-[28px]"}`}
+                  >
+                    {s.title}
+                  </h3>
+                  <p className={`relative m-0 text-[15px] font-light ${photo ? "text-[#C9D0DC]" : "text-soft"} ${s.wide ? "max-w-110" : ""}`}>
+                    {s.desc}
+                  </p>
+                  <div className="relative mt-auto">
+                    <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3.5 py-2 text-[13px] font-medium">
+                      Rok: {s.rok}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

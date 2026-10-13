@@ -28,7 +28,7 @@ const paths: Record<IconName, React.ReactNode> = {
   file: <path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8l-5-5zM9 14l2 2 4-4" />,
 };
 
-export function ServiceIcon({ name, color = "#0B0F14" }: { name: IconName; color?: string }) {
+export function ServiceIcon({ name, color = "#FFFFFF" }: { name: IconName; color?: string }) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       {paths[name]}
@@ -64,7 +64,7 @@ export function Check() {
 
 export function LogoMark() {
   return (
-    <span className="flex size-9 items-center justify-center rounded-xl bg-ink">
+    <span className="flex size-9 items-center justify-center rounded-xl border border-white/20 bg-white/10">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
         <circle cx="10" cy="10" r="6.5" stroke="var(--color-accent)" strokeWidth="1.6" />
         <path d="M10 0v5M10 15v5M0 10h5M15 10h5" stroke="var(--color-accent)" strokeWidth="1.6" />

@@ -1,6 +1,6 @@
 # Meridijan Geodezija — Next.js + Tailwind
 
-Sajt geodetskog biroa iz Kraljeva (dizajn B, „bento“). Svi podaci o firmi su **DUMMY_DATA**. Klijent ne želi definisane cene, pa nigde nema iznosa — samo se naglašava da su cene prilično povoljne.
+Sajt geodetskog biroa iz Kraljeva (dizajn C, „Staklo“ — branch `typeC`; dizajn B je na `master`). Svi podaci o firmi su **DUMMY_DATA**. Klijent ne želi definisane cene, pa nigde nema iznosa — samo se naglašava da su cene prilično povoljne.
 
 Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4.
 
@@ -34,9 +34,9 @@ public/img/         topografske SVG slike (generisane, originalne)
 
 ## Brze izmene
 
-- Boja akcenta: `--color-accent` u `app/globals.css` (npr. `#ff6a2b` za narandžastu).
+- Boja akcenta: `--color-accent` u `app/globals.css` (npr. `#3dffd0`, `#ff9a3d`, `#9a8cff`).
 - Tekstovi i cene: `lib/data.ts`.
-- Dugmad, kartice i naslovi dele klase iz `components/ui.ts`.
+- Efekti (staklo `.glass`, rainbow dugme `.rb`, kartice `.gc`, burger meni) su u `app/globals.css`.
 
 ## Sledeći koraci (predlog)
 
