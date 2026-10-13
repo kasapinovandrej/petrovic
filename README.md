@@ -1,4 +1,4 @@
-# Meridijan Geodezija — Next.js + Tailwind
+# Petrović Geodezija — Next.js + Tailwind
 
 Sajt geodetskog biroa iz Kraljeva (dizajn C, „Staklo“ — branch `typeC`; dizajn B je na `master`). Svi podaci o firmi su **DUMMY_DATA**. Klijent ne želi definisane cene, pa nigde nema iznosa — samo se naglašava da su cene prilično povoljne.
 
