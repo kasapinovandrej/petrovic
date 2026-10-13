@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* Dizajn tokeni — menjaj ovde (npr. --color-accent za drugu boju akcenta) */
+@theme {
+  --color-ink: #0b0f14;
+  --color-surface: #eceff2;
+  --color-surface-2: #e3e7eb;
+  --color-line: #d5dadf;
+  --color-muted: #3a4450;
+  --color-muted-2: #5a6672;
+  --color-accent: #c8f53a;
+
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+
+  --animate-rise: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-rise-2: rise 0.9s 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-rise-3: rise 0.9s 0.24s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-marquee: marquee 38s linear infinite;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-surface text-ink font-sans antialiased overflow-x-hidden;
+    line-height: 1.55;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Centriran sadržaj sa responzivnim bočnim razmakom */
+@utility wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1320px;
+  padding-inline: clamp(16px, 3vw, 32px);
+}
