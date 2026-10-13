@@ -8,12 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
     "@tailwindcss/postcss": "^4.3.3",
     "next": "^16.4.0",
     "postcss": "^8.5.29",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "tailwindcss": "^4.3.3"
+    "react-hook-form": "^7.90.0",
+    "tailwindcss": "^4.3.3",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
